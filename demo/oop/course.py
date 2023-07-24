@@ -1,7 +1,7 @@
-
 class Course:
     # static attribute or class attribute
     taxrate = 18
+
     # constructor
     def __init__(self, title, duration, fee=5000):
         # object attributes
@@ -15,9 +15,16 @@ class Course:
     def setfee(self, newfee):
         self.fee = newfee
 
+    @staticmethod   # decorator
+    def settaxrate(taxrate):
+        Course.taxrate = taxrate
+
 
 c = Course("AWS", 24, 3500)
 print(c.fee)
 c.setfee(4000)
 print(c.getnetfee())
 c2 = Course("Spring", 15)
+
+Course.settaxrate(15)
+
