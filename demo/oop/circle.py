@@ -22,14 +22,11 @@ c3 = Circle(5)
 
 lc = [c1, c2, c3]
 
-for c in sorted(lc):
+for c in sorted(lc, key=lambda c: c.radius):
     print(c)
-
 
 # print(c1)  # str(c1) --> c1.__str__()
 # print(c1 == c2)  # c1.__eq__(c2)
 # print(c3 > c2)  # c3.__gt__(c2)
 # print(c2 < c3)
 # print(float(c1) + float(c2))   # c1.__float__()
-
-

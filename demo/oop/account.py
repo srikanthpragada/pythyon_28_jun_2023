@@ -13,6 +13,15 @@ class SavingsAccount:
     def getbalance(self):
         return self.balance
 
+    def __str__(self):
+        return f"{self.acno} - {self.ahname} - {self.balance}"
+
+    def __eq__(self, other):
+        return self.acno == other.acno
+
+    def __gt__(self, other):
+        return self.balance > other.balance
+
 
 a1 = SavingsAccount(1, "Jack", 10000)
 a2 = SavingsAccount(2, "Cathy")
