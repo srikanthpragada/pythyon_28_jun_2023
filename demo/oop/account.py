@@ -1,3 +1,12 @@
+class InsufficientFundsError (Exception):
+    def __init__(self, amount, balance):
+        self.amount = amount
+        self.balance = balance
+
+    def __str__(self):
+        return f"Insufficient balance {self.balance} for withdraw of {self.amount}"
+
+
 class SavingsAccount:
     def __init__(self, acno, ahname, balance=0):
         self.acno = acno
@@ -8,6 +17,9 @@ class SavingsAccount:
         self.balance += amount
 
     def withdraw(self, amount):
+        if self.balance < amount:
+            raise InsufficientFundsError(amount, self.balance)
+
         self.balance -= amount
 
     def getbalance(self):
@@ -23,9 +35,11 @@ class SavingsAccount:
         return self.balance > other.balance
 
 
-a1 = SavingsAccount(1, "Jack", 10000)
+a1 = SavingsAccount(1, "Jack", -10000)
+a1.withdraw(20000)
+
 a2 = SavingsAccount(2, "Cathy")
-a1.deposit(10000)
+a1.deposit(-10000)
 a1.withdraw(5000)
 print(a1.getbalance())
 a2.deposit(50000)
