@@ -26,6 +26,9 @@ class Stack:
     def length(self):
         return len(self.data)
 
+    def __iter__(self):
+        return iter(reversed(self.data))
+
 
 s = Stack()
 try:
@@ -33,10 +36,11 @@ try:
 except StackEmptyError as ex:
     print(ex)
 
-
-
 s.push(10)
 s.push(20)
-print(s.peek())
-print(s.pop())
-print(s.length) # property
+# print(s.peek())
+# print(s.pop())
+# print(s.length) # property
+
+for v in s:
+    print(v)
